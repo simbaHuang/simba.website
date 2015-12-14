@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> 网站常用效果插件 </title>
+		<meta name="Generator" content="Notepad++">
+		<meta name="Keywords" content="网站常用效果插件">
+		<meta name="Author" content="Eric">
+		<meta http-equiv="Content-Language" content="zh-CN">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+		<!--页面在规定时间内跳转到指定页面-->
+		<!--<meta http-equiv="Refresh" content="n;url=http://www.baidu.com">-->
+		<!--强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用-->
+		<meta http-equiv="windows-Target" content="_top">
+		<link rel="stylesheet" href="./css/base.css" />
+		<link rel="stylesheet" href="./css/common.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="body">
+			<!--截取字符串-->
+			<div class="limit"> 
+				<h1 class="title">截取字符串</h1>
+				<div class="content">
+					<!--js
+					<p class="limitCon">这里只能显示8个字符</p>-->
+					<!--html处理-->
+					<p e-fun="limit" e-num="10">这里只能显示10个字符，嗯呢呢呢</p>
+				</div>
+			</div>
+			
+			<!--获取系统时间-->
+			<div class="getTime">
+				<h1 class="title">获取系统时间</h1>
+				<div class="content">
+					<!--js
+					<p class="gtCon"></p>-->
+					<!--html处理-->
+					<p e-fun="time" e-format="2" e-isTime="true"></p>
+				</div>
+			</div>
+			
+			<!--纯css刷新等待-->
+			<div class="">
+				<h1 class="title">纯css刷新等待</h1>
+				<div class="content">
+					<a href="javascript:" class="grebtn">订单提交中<span class="dotting"></span></a>
+				</div>
+			</div>
+		
+			<!--Tab菜单切换-->
+			<div class="">
+				<h1 class="title">Tab菜单切换</h1>
+				<div class="content">
+					<!--js-->
+					<div e-fun="tab" e-event="click" e-index="0" class="tab">
+						<div class="clear">
+							<a e-tab-for="nav0">a</a>
+							<a e-tab-for="nav1">b</a>
+							<a e-tab-for="nav2">c</a>
+						</div>
+						<div>
+							<p e-tab-nav="nav0">a</p>
+							<p e-tab-nav="nav1">b</p>
+							<p e-tab-nav="nav2">c</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--获取URL的参数值-->
+			<div class="">
+				<h1 class="title">获取URL的参数值</h1>
+				<div class="content">
+					
+					<p>JS使用方法</p>
+					<p>var RequestQueryString = $.GetRequest(href);</p>
+				</div>
+			</div>
+			
+			<!--关闭浏览器窗口-->
+			<div class="">
+				<h1 class="title">关闭浏览器窗口</h1>
+				<div class="content">
+					<p e-fun="closeWin">关闭窗口</p>
+				</div>
+			</div>
+			
+			<!--div模拟下拉-->
+			<div class="">
+				<h1 class="title">div模拟下拉</h1>
+				<div class="content">
+					<!--js-->
+					<div e-fun="dropBox" e-val=0  class="dropBox cp clear">
+						<input class="fms" readonly type="text" />
+						<i class="fa fa-chevron-down"></i>
+						<ul class="">
+							<li>选项1</li>
+							<li>选项2</li>
+							<li>选项3</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!--弹出框-->
+			<div class="">
+				<h1 class="title">指定弹出框</h1>
+				<div class="content">
+					<!--js-->
+					<a href="javascript:" e-pop-for="pop1">点我弹出popBox</a>
+				</div>
+				<div class="popBox none" e-pop-box="pop1">
+					<div class="popCon">
+						<p class="popTit">这是popBox</p>
+						<p><a href="javascript:" e-pop-close="pop1">关闭</a></p>
+					</div>
+				</div>
+			</div>
+			
+			<!--多选框-->
+			<div class="" id="a">
+				<h1 class="title">图片式多选框</h1>
+				<div class="content">
+					<!--js-->
+					<div class="" e-fun="check">
+						<ul class="checkList">
+							<li class="fristCheck"><i e-check-all e-check=0><img src="./images/e-check.png" alt="" />全选</i></li>
+							<li class="secCheck clear">
+								<i e-check-one e-check=0><img src="./images/e-check.png" alt="" />多选1</i>
+								<i e-check-one e-check=0><img src="./images/e-check.png" alt="" />多选2</i>
+								<i e-check-one e-check=0><img src="./images/e-check.png" alt="" />多选3</i>
+								<i e-check-one e-check=0><img src="./images/e-check.png" alt="" />多选4</i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!--单选框-->
+			<div class="">
+				<h1 class="title">图片式单选框</h1>
+				<div class="content">
+					<!--js-->
+					<div class="" e-fun="radius">
+						<ul class="checkList">
+							<li class="secCheck clear">
+								<i e-radius e-check=1><img src="./images/e-radiused.png" alt="" />单选1</i>
+								<i e-radius e-check=0><img src="./images/e-radius.png" alt="" />单选2</i>
+								<i e-radius e-check=0><img src="./images/e-radius.png" alt="" />单选3</i>
+								<i e-radius e-check=0><img src="./images/e-radius.png" alt="" />单选4</i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+			<!--回到顶部-->
+			<div class="">
+				<h1 class="title">类锚点  回到顶部</h1>
+				<div class="content">
+					<!--js-->
+					<div class="">
+						<a href="javascript:" id="a" e-fun="anchor" e-style="{forID:'a'}">点我就能回到顶部了</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+		<!--js-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.namespace.webSite.js"></script>
+		
+	
+	</body>
+</html>
