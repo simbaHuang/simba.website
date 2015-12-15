@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 	<head>
 		<meta charset="utf-8">
 		<title> 网站常用效果插件 </title>
@@ -14,40 +14,34 @@
 		<meta http-equiv="windows-Target" content="_top">
 		<link rel="stylesheet" href="./css/base.css" />
 		<link rel="stylesheet" href="./css/common.css" />
-		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
 		<div class="body">
+		
+			<!--轮播-->
+			<div class="limit"> 
+				<h1 class="title">轮播</h1>
+				<div class="content">
+					<!--html处理-->
+					<div class="slider" e-fun="slider">
+						<a href="javascript:"><img src="./images/1.jpg" alt="" /></a>
+						<a href="javascript:"><img src="./images/2.jpg" alt="" /></a>
+						<a href="javascript:"><img src="./images/3.jpg" alt="" /></a>
+						<a href="javascript:"><img src="./images/4.jpg" alt="" /></a>
+						<a href="javascript:"><img src="./images/5.jpg" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		
 			<!--截取字符串-->
 			<div class="limit"> 
 				<h1 class="title">截取字符串</h1>
 				<div class="content">
-					<!--js
-					<p class="limitCon">这里只能显示8个字符</p>-->
 					<!--html处理-->
 					<p e-fun="limit" e-num="10">这里只能显示10个字符，嗯呢呢呢</p>
 				</div>
 			</div>
 			
-			<!--获取系统时间-->
-			<div class="getTime">
-				<h1 class="title">获取系统时间</h1>
-				<div class="content">
-					<!--js
-					<p class="gtCon"></p>-->
-					<!--html处理-->
-					<p e-fun="time" e-format="2" e-isTime="true"></p>
-				</div>
-			</div>
-			
-			<!--纯css刷新等待-->
-			<div class="">
-				<h1 class="title">纯css刷新等待</h1>
-				<div class="content">
-					<a href="javascript:" class="grebtn">订单提交中<span class="dotting"></span></a>
-				</div>
-			</div>
-		
 			<!--Tab菜单切换-->
 			<div class="">
 				<h1 class="title">Tab菜单切换</h1>
@@ -65,24 +59,6 @@
 							<p e-tab-nav="nav2">c</p>
 						</div>
 					</div>
-				</div>
-			</div>
-			
-			<!--获取URL的参数值-->
-			<div class="">
-				<h1 class="title">获取URL的参数值</h1>
-				<div class="content">
-					
-					<p>JS使用方法</p>
-					<p>var RequestQueryString = $.GetRequest(href);</p>
-				</div>
-			</div>
-			
-			<!--关闭浏览器窗口-->
-			<div class="">
-				<h1 class="title">关闭浏览器窗口</h1>
-				<div class="content">
-					<p e-fun="closeWin">关闭窗口</p>
 				</div>
 			</div>
 			
@@ -161,7 +137,7 @@
 				<div class="content">
 					<!--js-->
 					<div class="">
-						<a href="javascript:" id="a" e-fun="anchor" e-style="{forID:'a'}">点我就能回到顶部了</a>
+						<a href="javascript:" id="a" e-fun="anchor">点我就能回到顶部了</a>
 					</div>
 				</div>
 			</div>

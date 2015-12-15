@@ -98,3 +98,9 @@ div[e-fun = "tab"] a.choo{background: #872558;}
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
+
+/*轮播*/
+.slider{
+	margin: 0 auto;
+	width: 100%;
+}
