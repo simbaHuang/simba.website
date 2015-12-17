@@ -1,4 +1,4 @@
-# jquery.namespace.webSite
+# simba.website
 
 集合了一些网站开发中常见的组件(基于jq)
 
