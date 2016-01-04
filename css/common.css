@@ -24,7 +24,55 @@
 }
 .title{height: 40px;line-height: 40px;}
 .content{padding: 20px;border: 1px dashed #ccc;}
+.pop-a{color: #787878;}
 .demoDo{padding: 10px;}
+.demo-list{}
+.demo-list>li{
+	float: left;
+	margin: 0 10px;
+	height: 40px;
+	line-height: 40px;
+}
+.demo-list span{
+	float: left;
+}
+.demo-list li>input{
+	float: left;
+	margin-top: 4px;
+	width: 100px;
+	border:1px solid #ccc;
+	padding: 5px;
+	height: 20px;
+	line-height: 20px;
+	font-family: "Microsoft YaHei";
+}
+.demo-list .demoDrop{
+	float: left;
+	margin-top: 4px;
+	width: 100px;
+	height: 30px;
+	border:1px solid #ccc;
+}
+.demoDrop ul{
+	border:1px solid #ccc;
+	margin-left: -1px;
+}
+.demo-a{
+	display: block;
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #ee248d;
+	color: #fff;
+	border-radius: 5px;
+}
+.demo-a:hover{
+	background-color: #c61e75;
+}
+.demo-a:active{
+	background-color: #9d175d;
+}
 
 
 
@@ -35,36 +83,13 @@ div[e-fun = "tab"] a.choo{background: #872558;}
 /*下拉框*/
 .dropBox{
 	position: relative;
-	padding: 0 10px;
-	display: inline-block;
+	width: 140px;
+	height: 30px;
 	border: 1px solid #dcdcdc;
-}
-.dropBox input{
-	float: left;
-	width: 150px;
-	height: 40px;
-	line-height: 40px;
-	outline: none;
-}
-.dropBox i{
-	float: right;
-	width: 30px;
-	height: 40px;
-	border-left: 1px solid #dcdcdc;
 }
 .dropBox ul{
-	display: none;
-	position: absolute;
-	top:41px;
-	left: -1px;
-	width: 100%;
 	border: 1px solid #dcdcdc;
-	background-color: #fff;
-	z-index: 10;
-}
-.dropBox ul li{
-	padding: 0 10px;
-	line-height: 40px;
+	margin-left: -1px;
 }
 
 
@@ -103,4 +128,18 @@ div[e-fun = "tab"] a.choo{background: #872558;}
 .slider{
 	margin: 0 auto;
 	width: 100%;
+}
+
+/*弹框*/
+.btn{
+	display: inline-block;
+	padding: 5px 10px;
+	background-color: #005fd5;
+	color: #fff;
+}
+.btn:hover{
+	background-color: #004293;
+}
+.btn:active{
+	background-color: #00285a;
 }

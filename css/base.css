@@ -13,9 +13,9 @@ body { background-color: #ececec; color: #787878; font-family: "Microsoft YaHei"
 ::-webkit-scrollbar-track-piece {background-color: #ccd0d2;}
 ul, ol, li { list-style: none;}
 
-a:link{text-decoration: none;color:#787878;}
-a:visited{text-decoration: none;color:#787878;}
-a:hover{text-decoration: none; color:#787878;}
+a:link{text-decoration: none;}
+a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
 
 /*常用颜色和背景*/
 .cw{color: #FFF;}
