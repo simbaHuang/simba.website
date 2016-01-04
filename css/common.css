@@ -55,7 +55,6 @@
 }
 .demoDrop ul{
 	border:1px solid #ccc;
-	margin-left: -1px;
 }
 .demo-a{
 	display: block;
@@ -89,7 +88,6 @@ div[e-fun = "tab"] a.choo{background: #872558;}
 }
 .dropBox ul{
 	border: 1px solid #dcdcdc;
-	margin-left: -1px;
 }
 
 
