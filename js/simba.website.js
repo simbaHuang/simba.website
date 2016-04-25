@@ -214,10 +214,10 @@
 			checkSrcChange(thischeck,$(this));
 			
 			//遍历所有单选 判断是否全选
-			var checkOne = $checkOne.size();
-			var checkedOne = ths.find("*[e-check-one][e-check=1]").size();
+			var checkOneSize = $checkOne.size();
+			var checkedOneSize = ths.find("*[e-check-one][e-check=1]").size();
 
-			if(checkOne == checkedOne){
+			if(checkOneSize == checkedOneSize){
 				$checkAll.attr("e-check",1);
 				checkSrcChange(1,$checkAll);
 			}else{
@@ -361,14 +361,77 @@
 			autoSlider : true, //是否自动轮播
 			moveStyle : "slide", //动画效果  slide ：滑动， fade ：渐隐渐现
 			addTag : true,	//是否创建圆点标记
-			tagSize : 12,
+			tagSize : 12,  //圆点标记的大小尺寸
 			tagDefaultBg : "#fff", //圆点标记的默认背景
 			tagActiveBg : "#5638d8", // 圆点标记选中背景
 			btnShow : true, //是否显示左右按钮
 			btnW : 30,	//按钮的宽度
 			btnH : 60,	//按钮的高度
-			btnBg : "rgba(255,255,255,.6)" //左右按钮的背景
+			btnBg : "rgba(255,255,255,.6)", //左右按钮的背景
+			tap: true
 		}, opts || {});
+
+		//定义基本样式
+		var cssStyle = {
+			//外容器样式
+			wrap : {
+				"position" : "relative",
+				"height" : opts.imgH + "px",
+				"overflow" : "hidden",
+				"background-color" : "#fff",
+				"z-index" : "9"
+			},
+			//包裹图片的a的样式
+			link : {
+				"display" : "block",
+				"position" : "absolute",
+				"top" : "0",
+				"left" : "100%",
+				"width" : "100%",
+				"height" : "100%",
+				"z-index" : "9"
+			},
+			//图片样式
+			imgs : {
+				"width" : "100%",
+				"height" : "100%"
+			},
+			//左右按钮样式
+			btn : {
+				"position" : "absolute",
+				"top" : "50%",
+				"margin-top" : (-1)*opts.btnH/2 + "px",
+				"width" : opts.btnW + "px",
+				"height" : opts.btnH + "px",
+				"cursor" : "pointer",
+				"background-color" : opts.btnBg,
+				"z-index" : "10"
+			},
+			//圆点外容器样式
+			tagBox : {
+				"position" : "absolute",
+				"left" : "0",
+				"bottom" : "0",
+				"width" : "100%",
+				"height" : "40px",
+				"line-height" : "40px",
+				"font-size" : "0",
+				"text-align" : "center",
+				"z-index" : "10"
+			},
+			//圆点样式
+			tag : {
+				"display" : "inline-block",
+				"margin-top" : (40 - opts.tagSize)/2 + "px",
+				"margin-left" : "5px",
+				"margin-right" : "5px",
+				"width" : opts.tagSize + "px",
+				"height" : opts.tagSize + "px",
+				"background-color" : opts.tagDefaultBg,
+				"border-radius" : "9999px",
+				"cursor" : "pointer"
+			}
+		}
 		//
 		opts.timeout = opts.timeout < 1500 ? 1500 : opts.timeout;
 		//
@@ -384,9 +447,6 @@
 			ths.find(".s_btn").remove();
 			ths.find(".s_tag").remove();
 
-			paramChange("autoSlider");
-			paramChange("addTag");
-			paramChange("btnShow");
 			if(opts.addTag){
 				createTag(ths);
 				$tag.find("span").eq(0).css({"background-color" : opts.tagActiveBg});
@@ -403,90 +463,60 @@
 					}
 				});
 			}
+			if(opts.tap){
+				$imgs.on("touchstart",function (e) {
+					stopSlider();
+					$imgs.on("touchmove",function (event) {
+						var event = event || window.event;
+						console.log(event);
+						console.log(event.currentTarget.x);
+					});
+				});
+				$imgs.on("touchend",function (e) {
+					$imgs.off("touchmove",function (e) {
+
+					});
+					startSlider();
+				});
+			}
 			$thsLink.eq(0).css({"left" : 0});
 			$thsLink.eq(imgSize - 1).css({"left" : "-100%"});
 			
 			startSlider();
 		},
-		//变量转换
-		paramChange = function(p){
-			if(eval("opts." + p) == "true"){
-				opts[p] = true;
-			}else if(eval("opts." + p) == "false"){
-				opts[p] = false;
-			}
-		},
 		//初始化样式
 		initCss = function(){
-			ths.css({
-				"position" : "relative",
-				"height" : opts.imgH + "px",
-				"overflow" : "hidden",
-				"background-color" : "#fff",
-				"z-index" : "9"
-			});
-			$thsLink.css({
-				"display" : "block",
-				"position" : "absolute",
-				"top" : "0",
-				"left" : "100%",
-				"width" : "100%",
-				"height" : "100%",
-				"z-index" : "9"
-			});
-			$imgs.css({
-				"width" : "100%",
-				"height" : "100%"
-			});
+			setCss(ths,cssStyle.wrap);
+			setCss($thsLink,cssStyle.link);
+			setCss($imgs,cssStyle.imgs);
+		},
+		//修改样式
+		setCss = function (obj,cssArr) {
+			obj.css(cssArr);
 		},
 		//创建左右按钮
 		createBtn = function(){
-			var btnTem = '<span class="s_btn"></span><span class="s_btn"></span>';
-			ths.append(btnTem);
+			ths.append("<span class='s_btn'>").append("<span class='s_btn'>");
 			$btn = ths.find(".s_btn");
-			$btn.css({
-				"position" : "absolute",
-				"top" : "50%",
-				"margin-top" : (-1)*opts.btnH/2 + "px",
-				"width" : opts.btnW + "px",
-				"height" : opts.btnH+ "px",
-				"cursor" : "pointer",
-				"background-color" : opts.btnBg,
-				"z-index" : "10"
-			});
+
+			setCss($btn,cssStyle.btn);
+
 			$btn.eq(0).css({"left" : "10px"});
 			$btn.eq(1).css({"right" : "10px"});
-		}
+		},
 		//创建圆点标记
 		createTag = function(warp){
-			var tem = '<div class="s_tag"></div>';
-			warp.append(tem);
+			//var tem = '<div class="s_tag"></div>';
+			warp.append("<div class='s_tag'>");
 			$tag = warp.find(".s_tag");
-			$tag.css({
-				"position" : "absolute",
-				"left" : "0",
-				"bottom" : "0",
-				"width" : "100%",
-				"height" : "40px",
-				"line-height" : "40px",
-				"font-size" : "0",
-				"text-align" : "center",
-				"z-index" : "10"
-			});
+
+			setCss($tag,cssStyle.tagBox);
+
 			for(var i = 0; i < imgSize; i ++){
-				$tag.append("<span></span>");
+				$tag.append("<span>");
 			}
-			$tag.find("span").css({
-				"display" : "inline-block",
-				"margin-top" : (40 - opts.tagSize)/2 + "px", 
-				"margin-left" : "5px",
-				"margin-right" : "5px",
-				"width" : opts.tagSize + "px",
-				"height" : opts.tagSize + "px",
-				"background-color" : opts.tagDefaultBg,
-				"border-radius" : "9999px",
-				"cursor" : "pointer"
-			});
+
+			setCss($tag.find("span"),cssStyle.tag);
 		},
 		//轮播动画
 		imgsMove = function(direction){
@@ -546,14 +576,18 @@
 		//暂停轮播
 		stopSlider = function(){
 			window.clearTimeout(ths.data('autoSli'));
-		};
+		},
+		//手势控制
+		tapMove = function () {
+
+		}
 
 		//首张图片加载完毕后执行初始化
 	    var bannerImg = new Image;
 	    bannerImg.onload = function(){
 	    	var loadImgW = ths.width(),
 	    		loadImgH = bannerImg.height;
-	    	opts.imgH = loadImgW*9/18;
+			cssStyle.wrap.height = opts.imgH = loadImgW*9/16;
 	    	init();
 	    }
 	    bannerImg.src = $imgs.eq(0).attr("src");
