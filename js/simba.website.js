@@ -368,7 +368,7 @@
 			btnW : 30,	//按钮的宽度
 			btnH : 60,	//按钮的高度
 			btnBg : "rgba(255,255,255,.6)", //左右按钮的背景
-			tap: true
+			tap: true //是否支持手指滑动
 		}, opts || {});
 
 		//定义基本样式
@@ -466,16 +466,15 @@
 			if(opts.tap){
 				$imgs.on("touchstart",function (e) {
 					stopSlider();
-					$imgs.on("touchmove",function (event) {
 						var event = event || window.event;
-						console.log(event);
+						console.log(event.touches[0]);
+						console.log(event.touches[0].clientX);
 						console.log(event.currentTarget.x);
-					});
+					
 				});
-				$imgs.on("touchend",function (e) {
-					$imgs.off("touchmove",function (e) {
-
-					});
+				$imgs.on("touchend",function (event) {
+						var event = event || window.event;
+						console.log(event.currentTarget.x);
 					startSlider();
 				});
 			}
@@ -541,7 +540,7 @@
 						var countR = (count == imgSize - 1 ? -1 : count) + 1;
 						$thsLink.eq(countR).css({"left":"100%"});
 					});
-					$thsLink.eq(count-1).stop(true,true).animate({"left": "-100%"},opts.moveTime);
+					$thsLink.eq(count-1).stop(true,true).animate ({"left": "-100%"},opts.moveTime);
 				}
 			}else if(opts.moveStyle == "fade"){
 				if(direction == "left"){
