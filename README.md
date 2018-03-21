@@ -4,4 +4,3 @@
 
 详情可看[介绍](http://simbahuang.github.io/2015/12/14/simba.website/)
 
-demo可看[demo](http://simba.langzu.cn.com/)
